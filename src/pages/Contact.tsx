@@ -40,7 +40,7 @@ export default function Contact() {
         {/* Title */}
         <div className="text-center mb-16">
           <h2 className="text-4xl md:text-5xl font-bold text-white mb-4">
-            Let's Connect
+            {"Let's Connect"}
           </h2>
           <p className="text-lg text-blue-100 font-light">
             Reach out to our team for partnerships and inquiries
