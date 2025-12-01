@@ -32,7 +32,7 @@ export default function Hero() {
   return (
     <section
       id="hero"
-      className="relative w-full min-h-screen flex items-center justify-center overflow-hidden pt-20"
+      className="relative w-full min-h-screen flex items-center justify-center overflow-hidden pt-16"
     >
       <div
         className="absolute inset-0 bg-cover bg-center bg-no-repeat"
@@ -62,7 +62,7 @@ export default function Hero() {
 
             <h1
               ref={headlineRef}
-              className="text-5xl sm:text-6xl md:text-7xl lg:text-8xl font-black leading-tight mb-6 md:mb-8 tracking-tighter opacity-0 [&.animate-in]:opacity-100 [&.animate-in]:translate-y-0 translate-y-4 break-words"
+              className="text-5xl sm:text-6xl md:text-7xl font-black leading-tight mb-6 md:mb-8 tracking-tighter opacity-0 [&.animate-in]:opacity-100 [&.animate-in]:translate-y-0 translate-y-4 break-words"
               style={{
                 transitionDuration: "900ms",
                 transitionTimingFunction: "cubic-bezier(0.34, 1.56, 0.64, 1)",
@@ -86,81 +86,55 @@ export default function Hero() {
                 transitionTimingFunction: "cubic-bezier(0.34, 1.56, 0.64, 1)",
               }}
             >
-              Connecting 50+ countries with premium electronics and home
-              appliances through cutting-edge distribution networks across the
-              Middle East, Africa, and CIS regions.
+              Connecting regions with premium electronics and home appliances
+              through cutting-edge distribution networks across the Middle East,
+              Africa, and CIS regions.
             </p>
-
-            <button
-              ref={ctaRef}
-              className="w-fit px-8 md:px-10 py-4 md:py-5 bg-gradient-to-r from-cyan-500 via-cyan-400 to-blue-500 hover:from-cyan-600 hover:via-cyan-500 hover:to-blue-600 text-white font-semibold rounded-xl transition-all duration-500 shadow-2xl hover:shadow-cyan-500/50 transform hover:scale-105 opacity-0 [&.animate-in]:opacity-100 [&.animate-in]:scale-100 scale-95 group text-base md:text-lg"
-              style={{
-                transitionDelay: "200ms",
-                transitionDuration: "900ms",
-                transitionTimingFunction: "cubic-bezier(0.34, 1.56, 0.64, 1)",
-                boxShadow: "0 0 30px rgba(0, 212, 255, 0.4)",
-              }}
-            >
-              Explore Solutions
-              <svg
-                className="inline-block w-5 h-5 md:w-6 md:h-6 ml-2 md:ml-3 group-hover:translate-x-1 transition-transform duration-300"
-                fill="none"
-                stroke="currentColor"
-                viewBox="0 0 24 24"
-              >
-                <path
-                  strokeLinecap="round"
-                  strokeLinejoin="round"
-                  strokeWidth={2.5}
-                  d="M13 7l5 5m0 0l-5 5m5-5H6"
-                />
-              </svg>
-            </button>
           </div>
 
           <div className="hidden md:flex items-center justify-center lg:justify-end">
             <div className="space-y-6 w-full max-w-sm">
               {/* Card 1 */}
               <div className="group cursor-pointer">
-                <div className="bg-white/10 backdrop-blur-xl border border-white/20 rounded-2xl p-6 md:p-8 hover:bg-white/15 hover:border-cyan-400/50 transition-all duration-500 transform hover:-translate-y-2">
+                <div className="bg-white/10 backdrop-blur-xl border border-white/20 rounded-2xl p-6  hover:bg-white/15 hover:border-cyan-400/50 transition-all duration-500 transform hover:-translate-y-2">
                   <div className="text-4xl md:text-5xl font-black text-transparent bg-gradient-to-r from-cyan-400 to-blue-400 bg-clip-text mb-2 md:mb-3">
-                    50+
+                    12+
                   </div>
                   <div className="text-gray-200 font-semibold text-sm md:text-base tracking-wide">
-                    Countries Served
+                    Years of Growth since 2013
                   </div>
                   <div className="text-xs md:text-sm text-gray-400 mt-2">
-                    Spanning 3 continents
+                    Established leadership
                   </div>
                 </div>
               </div>
 
               {/* Card 2 */}
               <div className="group cursor-pointer">
-                <div className="bg-white/10 backdrop-blur-xl border border-white/20 rounded-2xl p-6 md:p-8 hover:bg-white/15 hover:border-cyan-400/50 transition-all duration-500 transform hover:-translate-y-2">
+                <div className="bg-white/10 backdrop-blur-xl border border-white/20 rounded-2xl p-6  hover:bg-white/15 hover:border-cyan-400/50 transition-all duration-500 transform hover:-translate-y-2">
                   <div className="text-4xl md:text-5xl font-black text-transparent bg-gradient-to-r from-cyan-400 to-blue-400 bg-clip-text mb-2 md:mb-3">
-                    $2B+
+                    30+
                   </div>
                   <div className="text-gray-200 font-semibold text-sm md:text-base tracking-wide">
-                    Distribution Value
+                    Years Combined Expertise
                   </div>
                   <div className="text-xs md:text-sm text-gray-400 mt-2">
-                    Annual movement
+                    Leadership team excellence
                   </div>
                 </div>
               </div>
 
               {/* Card 3 */}
               <div className="group cursor-pointer">
-                <div className="bg-white/10 backdrop-blur-xl border border-white/20 rounded-2xl p-6 md:p-8 hover:bg-white/15 hover:border-cyan-400/50 transition-all duration-500 transform hover:-translate-y-2">
+                <div className="bg-white/10 backdrop-blur-xl border border-white/20 rounded-2xl p-6  hover:bg-white/15 hover:border-cyan-400/50 transition-all duration-500 transform hover:-translate-y-2">
                   <div className="text-4xl md:text-5xl font-black text-transparent bg-gradient-to-r from-cyan-400 to-blue-400 bg-clip-text mb-2 md:mb-3">
-                    500+
+                    3
                   </div>
                   <div className="text-gray-200 font-semibold text-sm md:text-base tracking-wide">
-                    Premium Partners
+                    Key Regions
                   </div>
                   <div className="text-xs md:text-sm text-gray-400 mt-2">
-                    Global network
+                    ME, Africa, CIS
                   </div>
                 </div>
               </div>

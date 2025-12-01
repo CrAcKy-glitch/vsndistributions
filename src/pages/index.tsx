@@ -1,15 +1,16 @@
 import { useEffect } from "react";
 import gsap from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
-import Header from "./Header";
-import Hero from "./hero";
-import About from "./About";
-import Stats from "./Stats";
+import Header from "../Components/Header";
+import Hero from "../Components/hero";
+import About from "@/Components/About";
+import Stats from "../Components/Stats";
 // import BusinessVerticals from "@/components/Sections/BusinessVerticals";
 import Leadership from "./Leadership";
 // import Presence from "@/components/Sections/Presence";
-import Contact from "./Contact";
-import Footer from "./Footer";
+
+import Footer from "../Components/Footer";
+import CompanyOverview from "../Components/company-overview";
 
 gsap.registerPlugin(ScrollTrigger);
 
@@ -25,16 +26,10 @@ export default function Home() {
 
   return (
     <main className="w-full">
-      <Header />
       <Hero />
       <About />
+      <CompanyOverview />
       <Stats />
-      {/* <VisionMissionValues />
-      <BusinessVerticals />
-      <Leadership />
-      <Presence /> */}
-      <Contact />
-      <Footer />
     </main>
   );
 }

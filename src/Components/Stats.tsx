@@ -53,22 +53,24 @@ export default function Stats() {
     {
       label: "Years of Excellence",
       value: "12+",
-      description: "Trusted experience in market leadership",
+      description:
+        "Founded in 2013, VSN Group has built trusted market leadership",
     },
     {
-      label: "Global Markets",
-      value: "50+",
-      description: "Operating across multiple regions",
+      label: "Combined Industry Expertise",
+      value: "30+",
+      description:
+        "Leadership team with decades at global brands like LG, Samsung",
     },
     {
-      label: "Partnership Network",
-      value: "26K+",
-      description: "Strong relationships with top brands",
+      label: "Brand Partnerships",
+      value: "10+",
+      description: "Official distributors for world-class electronics brands",
     },
     {
-      label: "Quality Assurance",
+      label: "Vision & Trust",
       value: "100%",
-      description: "Committed to industry standards",
+      description: "Commitment to fairness, authenticity, and excellence",
     },
   ];
 

@@ -30,16 +30,19 @@ export default function About() {
       title: "Industry Leadership",
       text: "With over a decade of expertise, we've established ourselves as a trusted force in electronics distribution, serving thousands of clients across emerging markets.",
       image: "/modern-office-building-professional.jpg",
+      href: "/about",
     },
     {
       title: "Innovation Driven",
       text: "We leverage cutting-edge supply chain technology and market intelligence to deliver solutions that exceed expectations and drive growth.",
       image: "/technology-innovation-circuit-board.jpg",
+      href: "/about",
     },
     {
       title: "Global Excellence",
       text: "Operating across the Middle East, Africa, and CIS regions, we set industry benchmarks through unwavering commitment to quality and service.",
       image: "/global-business-network-world-map.jpg",
+      href: "/about",
     },
   ];
 
@@ -89,12 +92,15 @@ export default function About() {
                   {item.text}
                 </p>
                 <div className="mt-6 pt-4 border-t border-slate-200">
-                  <p className="text-sm font-semibold text-cyan-600 hover:text-cyan-700 cursor-pointer transition-colors inline-flex items-center group/link">
+                  <a
+                    href={item.href}
+                    className="text-sm font-semibold text-cyan-600 hover:text-cyan-700 cursor-pointer transition-colors inline-flex items-center group/link"
+                  >
                     Learn More
                     <span className="ml-2 group-hover/link:translate-x-1 transition-transform">
                       →
                     </span>
-                  </p>
+                  </a>
                 </div>
               </div>
             </div>
