@@ -3,88 +3,117 @@
 import { useEffect, useRef, useState } from "react";
 
 export default function AboutHero() {
-  const titleRef = useRef<HTMLHeadingElement>(null);
-  const subtitleRef = useRef<HTMLParagraphElement>(null);
+  const heroRef = useRef<HTMLDivElement>(null);
+  const statsCardsRef = useRef<HTMLDivElement[]>([]);
+  const timelineRef = useRef<HTMLDivElement[]>([]);
+  const valuesRef = useRef<HTMLDivElement[]>([]);
+
   const [scrollY, setScrollY] = useState(0);
+  const parallaxOffset = scrollY * 0.3;
 
   useEffect(() => {
-    const handleScroll = () => {
-      setScrollY(window.scrollY);
-    };
+    // Animate stats cards
+    statsCardsRef.current.forEach((card, index) => {
+      gsap.from(card, {
+        scrollTrigger: {
+          trigger: card,
+          start: "top 80%",
+          end: "top 50%",
+        },
+        duration: 0.8,
+        opacity: 0,
+        y: 50,
+        ease: "power3.out",
+        delay: index * 0.1,
+      });
+    });
 
-    window.addEventListener("scroll", handleScroll);
-    return () => window.removeEventListener("scroll", handleScroll);
-  }, []);
+    // Animate timeline
+    timelineRef.current.forEach((item, index) => {
+      gsap.from(item, {
+        scrollTrigger: {
+          trigger: item,
+          start: "top 75%",
+          end: "top 50%",
+        },
+        duration: 0.8,
+        opacity: 0,
+        x: index % 2 === 0 ? -50 : 50,
+        ease: "power3.out",
+      });
+    });
 
-  useEffect(() => {
-    if (titleRef.current) titleRef.current.classList.add("animate-in");
-    if (subtitleRef.current) subtitleRef.current.classList.add("animate-in");
+    // Animate values
+    valuesRef.current.forEach((value, index) => {
+      gsap.from(value, {
+        scrollTrigger: {
+          trigger: value,
+          start: "top 75%",
+          end: "top 50%",
+        },
+        duration: 0.8,
+        opacity: 0,
+        y: 50,
+        ease: "power3.out",
+        delay: index * 0.15,
+      });
+    });
   }, []);
 
   return (
-    <section className="relative w-full h-screen flex items-center justify-center overflow-hidden">
-      {/* Background with parallax */}
+    <section
+      ref={heroRef}
+      className="relative w-full h-screen flex items-center justify-center overflow-hidden pt-20"
+    >
       <div
-        className="absolute inset-0"
+        className="absolute inset-0 bg-cover bg-center bg-no-repeat"
         style={{
-          backgroundImage:
-            "linear-gradient(135deg, rgba(15, 23, 42, 0.95) 0%, rgba(15, 23, 42, 0.85) 50%, rgba(6, 182, 212, 0.15) 100%)",
-          transform: `translateY(${scrollY * 0.3}px)`,
+          backgroundImage: "url('/global-business-network.jpg')",
+          transform: `translateY(${parallaxOffset}px)`,
         }}
       />
 
-      {/* Animated background elements */}
-      <div className="absolute inset-0 overflow-hidden">
-        <div className="absolute top-20 left-10 w-72 h-72 bg-cyan-500/5 rounded-full blur-3xl" />
-        <div className="absolute bottom-20 right-10 w-96 h-96 bg-blue-500/5 rounded-full blur-3xl" />
+      <div className="absolute inset-0 bg-gradient-to-r from-slate-950/85 via-slate-950/70 to-slate-950/60" />
+
+      {/* Animated accent */}
+      <div className="absolute inset-0 opacity-20">
+        <div className="absolute top-1/4 left-1/3 w-96 h-96 bg-cyan-400/40 rounded-full blur-3xl" />
+        <div className="absolute bottom-1/4 right-1/3 w-80 h-80 bg-blue-400/30 rounded-full blur-3xl" />
       </div>
 
-      <div className="relative z-10 w-full max-w-6xl mx-auto px-6 md:px-12 text-center">
+      <div className="relative z-10 w-full max-w-5xl mx-auto px-4 md:px-8 text-center">
+        <div className="mb-8">
+          <p className="text-xs md:text-sm font-semibold text-cyan-400 mb-4 md:mb-6 tracking-widest uppercase">
+            Our Story
+          </p>
+        </div>
+
         <h1
-          ref={titleRef}
-          className="text-6xl md:text-7xl lg:text-8xl font-black leading-tight mb-6 opacity-0 [&.animate-in]:opacity-100 [&.animate-in]:translate-y-0 translate-y-8 text-white"
+          className="text-5xl sm:text-6xl md:text-7xl lg:text-8xl font-black leading-tight mb-8 tracking-tighter"
           style={{
-            transitionDuration: "900ms",
-            transitionTimingFunction: "cubic-bezier(0.34, 1.56, 0.64, 1)",
+            backgroundImage:
+              "linear-gradient(135deg, #ffffff 0%, #00d4ff 50%, #0099cc 100%)",
+            backgroundClip: "text",
+            WebkitBackgroundClip: "text",
+            WebkitTextFillColor: "transparent",
           }}
         >
-          Our{" "}
-          <span className="bg-gradient-to-r from-cyan-400 to-blue-400 bg-clip-text text-transparent">
-            Story
-          </span>
+          Transforming Global Distribution
         </h1>
 
-        <p
-          ref={subtitleRef}
-          className="text-lg md:text-xl text-slate-300 max-w-3xl mx-auto leading-relaxed font-light opacity-0 [&.animate-in]:opacity-100 [&.animate-in]:translate-y-0 translate-y-8"
-          style={{
-            transitionDelay: "100ms",
-            transitionDuration: "900ms",
-            transitionTimingFunction: "cubic-bezier(0.34, 1.56, 0.64, 1)",
-          }}
-        >
-          From humble beginnings to global leadership in electronics
-          distribution. Discover how VSN Group transformed the supply chain
-          across three continents.
+        <p className="text-lg md:text-2xl text-gray-100 mb-8 max-w-3xl mx-auto leading-relaxed font-light">
+          Building supply chain excellence across three continents through
+          innovation, integrity, and unwavering commitment to our partners.
         </p>
 
-        {/* Scroll indicator */}
-        <div className="absolute -bottom-32 left-1/2 transform -translate-x-1/2 animate-bounce">
-          <svg
-            className="w-6 h-6 text-cyan-400"
-            fill="none"
-            stroke="currentColor"
-            viewBox="0 0 24 24"
-          >
-            <path
-              strokeLinecap="round"
-              strokeLinejoin="round"
-              strokeWidth={2}
-              d="M19 14l-7 7m0 0l-7-7m7 7V3"
-            />
-          </svg>
+        <div className="flex items-center justify-center gap-4">
+          <button className="px-8 md:px-10 py-4 md:py-5 bg-gradient-to-r from-cyan-500 to-blue-500 hover:from-cyan-600 hover:to-blue-600 text-white font-semibold rounded-xl transition-all duration-500 shadow-2xl hover:shadow-cyan-500/50 transform hover:scale-105 text-base md:text-lg">
+            Learn More
+          </button>
         </div>
       </div>
+
+      {/* Scroll indicator */}
     </section>
   );
 }

@@ -4,6 +4,7 @@ import { useRef, useState } from "react";
 import gsap from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
 import Image from "next/image";
+import Link from "next/link";
 
 gsap.registerPlugin(ScrollTrigger);
 
@@ -48,9 +49,9 @@ export default function Header() {
           label: "Distribution",
           id: "distribution",
           nested: [
-            { label: "Sony", id: "lg-dist" },
-            { label: "Philips", id: "samsung-dist" },
-            { label: "Band D", id: "seb-dist" },
+            { label: "Sony", id: "Sony" },
+            { label: "Philips", id: "Philips" },
+            { label: "Band D", id: "band-d" },
           ],
         },
       ],
@@ -59,8 +60,8 @@ export default function Header() {
       label: "Overseas",
       id: "about",
       nested: [
-        { label: "Nigeria", id: "nigeria" },
-        { label: "Azerbaijan", id: "azerbaijan" },
+        { label: "Nigeria", id: "nigeria", href: "https://naija-home.com" },
+        { label: "Azerbaijan", id: "azerbaijan", href: "" },
       ],
     },
     {
@@ -68,10 +69,10 @@ export default function Header() {
       id: "about-main",
       href: "/about",
       nested: [
-        { label: "Company", id: "about-company" },
-        { label: "Vision", id: "about-vision" },
-        { label: "Mission", id: "about-mission" },
-        { label: "Leadership", id: "leadership" },
+        { label: "Company", id: "about-company", href: "/about#company" },
+        { label: "Vision", id: "about-vision", href: "/about#vision" },
+        { label: "Mission", id: "about-mission", href: "/about#mission" },
+        { label: "Leadership", id: "leadership", href: "/about#leadership" },
       ],
     },
   ];
@@ -110,6 +111,21 @@ export default function Header() {
       logo: "/azerbaijan.svg",
       url: "#",
     },
+    Sony: {
+      name: "Sony",
+      logo: "/sony-logo.png",
+      url: "https://www.sony.com",
+    },
+    Philips: {
+      name: "Philips",
+      logo: "/philips-logo.png",
+      url: "https://www.philips.com",
+    },
+    "band-d": {
+      name: "Band D",
+      logo: "/bandd-logo.png",
+      url: "https://www.bandd.com",
+    },
   };
 
   const NestedDropdown = ({
@@ -125,7 +141,15 @@ export default function Header() {
           const hasTradingBrands =
             (item.label === "Trading" || item.label === "Distribution") &&
             item.nested?.some((i) =>
-              ["LG", "Samsung", "SEB", "Haier", "Sony"].includes(i.label)
+              [
+                "LG",
+                "Samsung",
+                "SEB",
+                "Haier",
+                "Sony",
+                "Nigeria",
+                "Azerbaijan",
+              ].includes(i.label)
             );
 
           return (
@@ -136,15 +160,17 @@ export default function Header() {
                   <span className="ml-1">›</span>
                 </button>
               ) : (
-                <button
+                <Link
+                  href={item.href || "#"}
                   onClick={() => {
                     scrollToSection(item.id);
                     setActiveDropdown(null);
                   }}
-                  className="w-full text-left px-4 py-2 text-slate-700 hover:bg-slate-100 hover:text-cyan-600 transition font-medium text-sm"
                 >
-                  {item.label}
-                </button>
+                  <button className="w-full text-left px-4 py-2 text-slate-700 hover:bg-slate-100 hover:text-cyan-600 transition font-medium text-sm">
+                    {item.label}
+                  </button>
+                </Link>
               )}
 
               {hasTradingBrands && (

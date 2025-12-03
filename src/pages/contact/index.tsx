@@ -64,9 +64,9 @@ export default function Contact() {
   return (
     <section
       id="contact"
-      className="w-full py-20 md:py-32 px-6 md:px-12 bg-gradient-to-br from-slate-950 via-slate-900 to-slate-800"
+      className="w-full py-20 md:py-32 px-6 bg-gradient-to-br from-slate-950 via-slate-900 to-slate-800"
     >
-      <div className="max-w-6xl mx-auto">
+      <div className="max-w-6xl mx-auto mt-20">
         <div className="text-center mb-20">
           <p className="text-cyan-400 font-semibold tracking-wide uppercase mb-4">
             Connect With Us

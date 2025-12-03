@@ -29,20 +29,34 @@ export default function LeadershipTeam() {
     {
       name: "Sujay Kumar",
       role: "Founder & Director",
-      experience: "30+ Years",
-      bio: "Industry veteran with executive roles at Samsung, LG, and Carrier across Asia and Africa",
+      experience: "25+ Years",
+      bio: "BACKED BY 25+ YEARS OF MARKET INSIGHT AND TRUSTED INDUSTRY RELATIONSHIPS, HE HAS BEEN A DRIVING FORCE BEHIND VSN GROUP’S RISE AND CONTINUED SUCCESS.",
     },
     {
       name: "Sunil Kumar",
       role: "Co-Founder & Director",
-      experience: "18+ Years",
-      bio: "Re-export market specialist with deep expertise in Dubai's competitive distribution landscape",
+      experience: "30+ Years",
+      bio: `DIRECTOR OF
+SAMSUNG’S WEST AFRICA
+OPERATIONS, HE SPEARHEADED
+BOLD EXPANSION STRATEGIES,
+DRIVING GROWTH IN CE/IT AND
+B2B ACROSS SOME OF THE
+REGION’S MOST CHALLENGING
+MARKETS.`,
     },
     {
       name: "Elshad Alizada",
       role: "Co-Founder & Director",
-      experience: "25+ Years",
-      bio: "Market pioneer since 1998 with Al-Futtaim Electronics, driving regional expansion",
+      experience: "18+ Years",
+      bio: `WITH SHARP
+PRODUCT EXPERTISE AND
+DEEP INSIGHT INTO CIS
+MARKETS, HE’S BEEN
+INSTRUMENTAL IN
+POSITIONING VSN GROUP AS A
+LEADING FORCE IN THE
+INDUSTRY.`,
     },
   ];
 

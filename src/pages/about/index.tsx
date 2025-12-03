@@ -16,12 +16,24 @@ export default function AboutPage() {
 
   return (
     <main className="w-full overflow-x-hidden">
-      <AboutHero />
-      <CompanyStory />
-      <CoreValues />
-      <GlobalImpact />
-      <OurJourney />
-      <LeadershipTeam />
+      <div id="#">
+        <AboutHero />
+      </div>
+      <div id="company">
+        <CompanyStory />
+      </div>
+      <div id="vision">
+        <CoreValues />
+      </div>
+      <div id="mission">
+        <GlobalImpact />
+      </div>
+      <div id="journey">
+        <OurJourney />
+      </div>
+      <div id="leadership">
+        <LeadershipTeam />
+      </div>
     </main>
   );
 }
