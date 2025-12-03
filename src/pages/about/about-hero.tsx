@@ -107,9 +107,12 @@ export default function AboutHero() {
         </p>
 
         <div className="flex items-center justify-center gap-4">
-          <button className="px-8 md:px-10 py-4 md:py-5 bg-gradient-to-r from-cyan-500 to-blue-500 hover:from-cyan-600 hover:to-blue-600 text-white font-semibold rounded-xl transition-all duration-500 shadow-2xl hover:shadow-cyan-500/50 transform hover:scale-105 text-base md:text-lg">
+          <a
+            href="#company"
+            className="px-8 md:px-10 py-4 md:py-5 bg-gradient-to-r from-cyan-500 to-blue-500 hover:from-cyan-600 hover:to-blue-600 text-white font-semibold rounded-xl transition-all duration-500 shadow-2xl hover:shadow-cyan-500/50 transform hover:scale-105 text-base md:text-lg"
+          >
             Learn More
-          </button>
+          </a>
         </div>
       </div>
 
