@@ -51,7 +51,7 @@ export default function Header() {
           nested: [
             { label: "Sony", id: "Sony" },
             { label: "Philips", id: "Philips" },
-            { label: "Band D", id: "band-d" },
+            { label: "Black & Decker", id: "Black & Decker" },
           ],
         },
       ],
@@ -121,16 +121,15 @@ export default function Header() {
       logo: "/philips-logo.png",
       url: "https://www.philips.com",
     },
-    "band-d": {
-      name: "Band D",
-      logo: "/bandd-logo.png",
-      url: "https://www.bandd.com",
+    "Black & Decker": {
+      name: "Black & Decker",
+      logo: "/black-and-decker-logo.svg",
+      url: "https://www.blackanddecker.ae/",
     },
   };
 
   const NestedDropdown = ({
     items,
-    parentId,
   }: {
     items: NavItem[];
     parentId: string;

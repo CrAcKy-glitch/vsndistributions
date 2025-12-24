@@ -23,14 +23,34 @@ export default function Contact() {
     }));
   };
 
-  const handleSubmit = (e: React.FormEvent) => {
+  const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
-    console.log(formData);
-    setSubmitted(true);
-    setTimeout(() => {
-      setSubmitted(false);
-      setFormData({ fullname: "", email: "", company: "", message: "" });
-    }, 3000);
+
+    try {
+      const res = await fetch("/api/contact", {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify(formData),
+      });
+
+      if (!res.ok) {
+        const data = await res.json().catch(() => null);
+        console.error("Contact error:", data);
+        alert(data?.error || "Failed to send message. Please try again.");
+        return;
+      }
+
+      setSubmitted(true);
+      setTimeout(() => {
+        setSubmitted(false);
+        setFormData({ fullname: "", email: "", company: "", message: "" });
+      }, 3000);
+    } catch (error) {
+      console.error("Contact submit error:", error);
+      alert("Something went wrong. Please try again.");
+    }
   };
 
   const contactIcons = {

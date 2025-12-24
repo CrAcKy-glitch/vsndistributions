@@ -1,6 +1,10 @@
 "use client";
 
 import { useEffect, useRef } from "react";
+import sujay from "../../../public/sujay-kumar.jpeg";
+import sunil from "../../../public/sunil-kumar.jpeg";
+import elshad from "../../../public/elshad.jpeg";
+import Image from "next/image";
 
 export default function LeadershipTeam() {
   const cardsRef = useRef<HTMLDivElement[]>([]);
@@ -28,12 +32,14 @@ export default function LeadershipTeam() {
   const leaders = [
     {
       name: "Sujay Kumar",
+      img: sujay,
       role: "Founder & Director",
       experience: "25+ Years",
       bio: "BACKED BY 25+ YEARS OF MARKET INSIGHT AND TRUSTED INDUSTRY RELATIONSHIPS, HE HAS BEEN A DRIVING FORCE BEHIND VSN GROUP’S RISE AND CONTINUED SUCCESS.",
     },
     {
       name: "Sunil Kumar",
+      img: sunil,
       role: "Co-Founder & Director",
       experience: "30+ Years",
       bio: `DIRECTOR OF
@@ -47,6 +53,7 @@ MARKETS.`,
     },
     {
       name: "Elshad Alizada",
+      img: elshad,
       role: "Co-Founder & Director",
       experience: "18+ Years",
       bio: `WITH SHARP
@@ -99,9 +106,7 @@ INDUSTRY.`,
                   <h3 className="text-2xl font-black text-slate-900 mb-1">
                     {leader.name}
                   </h3>
-                  <p className="text-cyan-600 font-semibold mb-4">
-                    {leader.role}
-                  </p>
+
                   <p className="text-sm text-slate-500 font-semibold mb-4 tracking-wide">
                     {leader.experience} Experience
                   </p>
