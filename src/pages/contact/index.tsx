@@ -35,12 +35,12 @@ export default function Contact() {
         body: JSON.stringify(formData),
       });
 
-      if (!res.ok) {
-        const data = await res.json().catch(() => null);
-        console.error("Contact error:", data);
-        alert(data?.error || "Failed to send message. Please try again.");
-        return;
-      }
+      // if (!res.ok) {
+      //   const data = await res.json().catch(() => null);
+      //   console.error("Contact error:", data);
+      //   alert(data?.error || "Failed to send message. Please try again.");
+      //   return;
+      // }
 
       setSubmitted(true);
       setTimeout(() => {
