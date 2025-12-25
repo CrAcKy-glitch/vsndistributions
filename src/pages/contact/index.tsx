@@ -12,6 +12,8 @@ export default function Contact() {
   });
 
   const [submitted, setSubmitted] = useState(false);
+  const [result, setResult] = useState<string | null>(null);
+  const [isLoading, setIsLoading] = useState(false); // loader state
 
   const handleChange = (
     e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>
@@ -23,33 +25,44 @@ export default function Contact() {
     }));
   };
 
-  const handleSubmit = async (e: React.FormEvent) => {
+  const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
+    setIsLoading(true);
+    setResult(null);
 
     try {
-      const res = await fetch("/api/contact", {
+      let data: any = new FormData(e.currentTarget);
+      data["access_key"] = "9879ac1c-320a-459f-9cf3-52f37095ce81"; // append access key
+
+      const res = await fetch("https://api.web3forms.com/submit", {
         method: "POST",
-        headers: {
-          "Content-Type": "application/json",
-        },
-        body: JSON.stringify(formData),
+        body: data,
       });
 
-      // if (!res.ok) {
-      //   const data = await res.json().catch(() => null);
-      //   console.error("Contact error:", data);
-      //   alert(data?.error || "Failed to send message. Please try again.");
-      //   return;
-      // }
+      const json = await res.json();
 
-      setSubmitted(true);
-      setTimeout(() => {
-        setSubmitted(false);
-        setFormData({ fullname: "", email: "", company: "", message: "" });
-      }, 3000);
+      if (json.success) {
+        setSubmitted(true);
+        setResult("✓ Message sent successfully");
+        setFormData({
+          fullname: "",
+          email: "",
+          company: "",
+          message: "",
+        });
+
+        setTimeout(() => {
+          setSubmitted(false);
+          setResult(null);
+        }, 3000);
+      } else {
+        setResult(json.message || "Failed to send message. Please try again.");
+      }
     } catch (error) {
-      console.error("Contact submit error:", error);
-      alert("Something went wrong. Please try again.");
+      console.error("Web3Forms submit error:", error);
+      setResult("Something went wrong. Please try again.");
+    } finally {
+      setIsLoading(false);
     }
   };
 
@@ -101,11 +114,20 @@ export default function Contact() {
         </div>
 
         <div className="grid grid-cols-1 md:grid-cols-2 gap-16">
+          {/* LEFT: Web3Forms-powered form */}
           <div className="bg-white/5 backdrop-blur-sm rounded-2xl p-8 md:p-10 border border-white/10 hover:border-white/20 transition-all duration-300">
             <h3 className="text-2xl font-bold text-white mb-8">
               Send us a Message
             </h3>
+
             <form onSubmit={handleSubmit} className="space-y-6">
+              {/* Hidden access key (also appended in JS for safety) */}
+              <input
+                type="hidden"
+                name="access_key"
+                value="9879ac1c-320a-459f-9cf3-52f37095ce81"
+              />
+
               <div>
                 <label className="block text-white/90 font-semibold mb-3 text-sm tracking-wide">
                   Full Name
@@ -168,13 +190,31 @@ export default function Contact() {
 
               <button
                 type="submit"
-                className="w-full px-6 py-4 bg-cyan-500 hover:bg-cyan-600 text-white font-semibold rounded-lg transition-all duration-300 hover:shadow-lg hover:shadow-cyan-500/50 transform hover:scale-105 active:scale-95"
+                disabled={isLoading}
+                className={`w-full px-6 py-4 bg-cyan-500 hover:bg-cyan-600 text-white font-semibold rounded-lg transition-all duration-300 hover:shadow-lg hover:shadow-cyan-500/50 transform hover:scale-105 active:scale-95 flex items-center justify-center gap-2 ${
+                  isLoading ? "opacity-80 cursor-not-allowed" : ""
+                }`}
               >
-                {submitted ? "✓ Message Sent Successfully" : "Send Message"}
+                {isLoading && (
+                  <span
+                    className="inline-block h-5 w-5 border-2 border-white/40 border-t-white rounded-full animate-spin"
+                    aria-hidden="true"
+                  />
+                )}
+                {isLoading
+                  ? "Sending..."
+                  : submitted
+                  ? "✓ Message Sent Successfully"
+                  : "Send Message"}
               </button>
+
+              {result && (
+                <p className="text-sm text-slate-300 pt-2">{result}</p>
+              )}
             </form>
           </div>
 
+          {/* RIGHT: contact info (unchanged) */}
           <div className="text-white space-y-12">
             <div>
               <h3 className="text-2xl font-bold mb-3">Contact Information</h3>
